@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Registration Form</title>
+    <script src="ScriptFormValidation.js"></script>
+    <style type="text/css">
+        html, body, h1, h2, h3, h4, h5, h6, div, p, img, dl, dt, dd,
+        ul, ol, li, table, th, tr, td, form, object,
+        article, aside, canvas, command, details, embed, fieldset,
+        figcaption, figure, footer, header, hgroup, legend,
+        mark, menu, meter, nav, output, progress, section, summary,
+        time, audio, video {
+            padding: 0;
+            border: 0;
+            margin: 0;
+        }
+        article, aside, details, figcaption, figure, footer,
+        header, hgroup, menu, nav, section {
+            display: block;
+        }
+        html {
+            font: 81.25% arial, san-serif;
+            background: #fff;
+            color: #333;
+            line-height: 1;
+            direction: ltr;
+        }
+        body {
+            background-color: #eeeeee;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 2em;
+            font-weight: bold;
+            line-height: 24px;
+            margin: 0 0 .46em;
+            text-align: center;
+        }
+        div {
+            width: 500px;
+            margin: auto;
+            padding-top: 40px;
+
+        }
+        input[type=password],
+        input[type=text],
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            display: inline-block;
+            height: 29px;
+            width: 100%;
+            margin: 0;
+            padding: 0px 10px;
+            background: #fff;
+            border: 1px solid #d9d9d9;
+            border-top: 1px solid #c0c0c0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-border-radius: 1px;
+            -moz-border-radius: 1px;
+            border-radius: 1px;
+        }
+        label {
+            display: inline-block;
+            width: 100%;
+            padding: 10px 0;
+            position: relative;
+            font-size: medium;
+        }
+        legend {
+            font-size: medium;
+            font-weight: bold;
+        }
+        fieldset {
+            border: 1px solid  black;
+            padding: 5px 40px;
+            margin: 10px;
+        }
+        input[type=submit],
+        input[type=reset] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 30px;
+            width: 100px;
+            margin: 20px 0px 20px 100px;
+            background: #09c;
+            color: #fff;
+            font-size: medium;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+            border: 1px solid #999;
+        }
+        input[type=radio] {
+            width: 13px;
+            height: 13px;
+            margin: 0;
+            cursor: pointer;
+            vertical-align: bottom;
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            padding-bottom: 10px;
+            -webkit-border-radius: 1px;
+            -moz-border-radius: 1px;
+            border-radius: 1px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            position: relative;
+        }
+        span {
+            font-size: medium;
+            margin-right: 30px;
+            vertical-align: bottom;
+            padding-bottom: 10px;
+        }
+        .error {
+            color: red;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body onload="document.registrationForm.userid.focus();">
+    <div id="mainContainer">
+        <h1>Registration Form</h1>
+        <form name="registrationForm" onsubmit="return fv.main()" action="http://localhost/OnSuccessForm.php" method="post">
+
+            <fieldset>
+                <legend>Login Credentials</legend>
+                    <label for="rForm_userid">User ID</label>
+                    <input type="text" id="rForm_userid" name="userid" size="12" onblur="fv.uid_validation()"/>
+                    <span id="uid_error" class="error"></span>
+
+                    <label for="rForm_password">Password</label>
+                    <input type="password" id="rForm_password" name="password" size="12" onblur="fv.password_validation()"/>
+                    <span id="pswd_error" class="error"></span>
+            </fieldset>
+
+            <fieldset>
+                <legend>Customer Information</legend>
+                    <label for="rForm_name">Name</label>
+                    <input type="text" id="rForm_name" name="username" size="50" onblur="fv.username_validation()"/>
+                    <span id="uname_error" class="error"></span>
+
+                    <label for="rForm_address">Address</label>
+                    <input type="text" id="rForm_address" name="address" size="50" onblur="fv.address_validation()"/>
+                    <span id="uadrs_error" class="error"></span>
+
+                    <label for="rForm_country">Country</label>
+                    <select id="rForm_country" name="country" onblur="fv.country_validation()">
+                        <option selected="selected" value="Default">Please select the country</option>
+                        <option value="AS">Australia</option>
+                        <option value="IN">India</option>
+                        <option value="US">United States</option>
+                    </select>
+                    <span id="ucountry_error" class="error"></span>
+
+                    <label>Gender</label>
+                    <input type="radio" name="mGender" value="ML" checked="checked" />
+                    <span>Male</span>
+                    <input type="radio" name="fGender" value="FL" />
+                    <span>Female</span>
+                    <label></label>
+            </fieldset>
+
+            <input type="submit" value="Submit"/>
+            <input type="reset" value="Reset" onclick = "fv.resetAll()"/>
+        </form>
+    </div>
+</body>
+</html>
